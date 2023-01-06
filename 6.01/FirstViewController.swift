@@ -37,9 +37,9 @@ class FirstViewController: UIViewController {
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
-        tableView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 10).isActive = true
-        tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 50).isActive = true
+        tableView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        tableView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         tableView.register(FirstTableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.delegate = self
@@ -59,6 +59,8 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FirstTableViewCell
+        cell.clipsToBounds = true
+        cell.layer.cornerRadius = 20
         cell.img.image = UIImage(named: menu[indexPath.row].img)
         cell.label1.text = menu[indexPath.row].label1
         cell.label2.text = menu[indexPath.row].label2

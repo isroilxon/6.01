@@ -13,16 +13,29 @@ class FirstTableViewCell: UITableViewCell {
     let label1 = UILabel()
     let label2 = UILabel()
     let label3 = UILabel()
+    let background = UIImageView()
+
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        background.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(background)
+        background.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        background.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        background.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        background.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        background.heightAnchor.constraint(equalToConstant: 350).isActive = true
+        background.image = UIImage(named: "1")
+        
         img.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(img)
-        img.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
-        img.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10).isActive = true
-        img.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10).isActive = true
+        img.topAnchor.constraint(equalTo: background.topAnchor, constant: 20).isActive = true
+        img.leftAnchor.constraint(equalTo: background.leftAnchor, constant: 20).isActive = true
+        img.rightAnchor.constraint(equalTo: background.rightAnchor, constant: -20).isActive = true
         img.heightAnchor.constraint(equalToConstant: 250).isActive = true
+        img.clipsToBounds = true
+        img.layer.cornerRadius = 20
         
         
         
@@ -30,9 +43,9 @@ class FirstTableViewCell: UITableViewCell {
         contentView.addSubview(img2)
         img2.topAnchor.constraint(equalTo: img.topAnchor, constant: 10).isActive = true
         img2.rightAnchor.constraint(equalTo: img.rightAnchor, constant: -10).isActive = true
-        img2.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        img2.widthAnchor.constraint(equalToConstant: 30).isActive = true
-        img2.image = UIImage(systemName:"bookmark.fill")
+        img2.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        img2.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        img2.image = UIImage(systemName:"bookmark.circle.fill")
         
         label1.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(label1)
